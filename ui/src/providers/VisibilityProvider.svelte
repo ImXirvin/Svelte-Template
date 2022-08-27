@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { useNuiEvent } from '../utils/useNuiEvent';
-  import { fetchNui } from '../utils/fetchNui';
+  import { ReceiveNUI } from '../utils/ReceiveNUI';
+  import { SendNUI } from '../utils/SendNUI';
   import { onMount } from 'svelte';
   import { visibility } from '../store/stores';
 
@@ -11,7 +11,7 @@
     isVisible = visible;
   });
 
-  useNuiEvent<boolean>('setVisible', (visible) => {
+  ReceiveNUI<boolean>('setVisible', (visible) => {
     visibility.set(visible);
   });
 
@@ -19,7 +19,7 @@
   onMount(() => {
     const keyHandler = (e: KeyboardEvent) => {
       if (isVisible && ['Escape'].includes(e.code)) {
-        fetchNui('hideUI');
+        SendNUI('hideUI');
         visibility.set(false);
       }
     };

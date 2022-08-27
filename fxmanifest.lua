@@ -8,16 +8,15 @@ version '0.0.1'
 lua54 'yes'
 
 
-ui_page 'ui/dist/index.html'
+ui_page 'html/index.html'
 
 client_script {
-  'client/**/*',
+  'client/**',
 }
 server_script {
-  "server/**/*",
+  "server/**",
   }
 
 files {
-  'ui/dist/index.html',
-  'ui/dist/**/*'
+  'html/**',
 }

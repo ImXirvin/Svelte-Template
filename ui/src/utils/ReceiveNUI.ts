@@ -17,7 +17,7 @@ interface NuiMessage<T = unknown> {
  *
  **/
 
-export function useNuiEvent<T = unknown>(
+export function ReceiveNUI<T = unknown>(
   action: string,
   handler: (data: T) => void
 ) {
