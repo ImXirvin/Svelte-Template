@@ -3,6 +3,7 @@
   import { SendNUI } from '../utils/SendNUI';
   import { onMount } from 'svelte';
   import { visibility } from '../store/stores';
+  import BackdropFix from './BackdropFix.svelte';
 
 
   let isVisible: boolean;
@@ -36,4 +37,5 @@
     <slot />
   {/if}
 </main>
+<BackdropFix />
 
