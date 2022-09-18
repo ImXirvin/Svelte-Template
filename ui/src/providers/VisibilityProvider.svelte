@@ -32,10 +32,24 @@
   });
 </script>
 
+{#if isVisible}
 <main>
-  {#if isVisible}
     <slot />
-  {/if}
 </main>
 <BackdropFix />
+{/if}
+
+<style>
+  main {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    overflow: hidden;
+    user-select: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  </style>
 
