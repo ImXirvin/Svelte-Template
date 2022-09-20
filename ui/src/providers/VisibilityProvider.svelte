@@ -45,11 +45,12 @@
     left: 0;
     top: 0;
     z-index: 100;
-    overflow: hidden;
     user-select: none;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    height: 100vh;
+width: 100vw;
   }
   </style>
 
