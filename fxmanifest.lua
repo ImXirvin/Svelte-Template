@@ -16,6 +16,9 @@ client_script {
 server_script {
   "server/**",
   }
+shared_script {
+  "shared/**",
+  }
 
 files {
   'html/**',
