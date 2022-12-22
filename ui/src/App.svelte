@@ -1,6 +1,9 @@
 <script lang="ts">
   import VisibilityProvider from "./providers/VisibilityProvider.svelte";
   import { debugData } from './utils/debugData';
+  import { browserMode, visibility } from './store/stores';
+  import { ReceiveNUI } from "./utils/ReceiveNUI";
+  import DebugBrowser from "./providers/DebugBrowser.svelte";
   
   debugData([
     {
@@ -9,6 +12,30 @@
     },
   ]);
 
+  debugData([
+    {
+      action: 'setBrowserMode',
+      data: {
+        browserMode: true,
+      },
+    },
+  ]);
+
+  function browserHideAndShow(e) {
+      if (e.key === '=') {
+        $visibility = true;
+      }
+  }
+
+  ReceiveNUI('setBrowserMode', (data) => {
+    browserMode.set(data.browserMode);
+    console.log("browser mode enabled");
+    if (data.browserMode) {
+      window.addEventListener('keydown', browserHideAndShow);
+    } else {
+      window.removeEventListener('keydown', browserHideAndShow);
+    }
+  });
 </script>
 
 <VisibilityProvider>
@@ -16,3 +43,7 @@
 <!-- PUT STUFF HERE  -->
 
 </VisibilityProvider>
+
+{#if $browserMode}
+  <DebugBrowser />
+{/if}
