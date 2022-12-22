@@ -11,6 +11,16 @@ export default defineConfig({
     /* plugin options */
   })],
   base: './', // fivem nui needs to have local dir reference
+  resolve: {
+    alias: {
+      "@assets": resolve("./src/assets"),
+      "@components": resolve("./src/components"),
+      "@providers": resolve("./src/providers"),
+      "@store": resolve("./src/store"),
+      "@utils": resolve("./src/utils"),
+      "@types": resolve("./src/types"),
+    },
+  },
   build: {
     emptyOutDir: true,
     outDir: '../html',
