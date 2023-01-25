@@ -10,5 +10,5 @@ Pretty cool.
 - Has a visibility Provider which can be toggled with "setVisible" and the data being a boolean.
 
 
-# As you can probably tell this is very similar to Project Error's version thats because I used some of their Utils and Visibility Provider but changed them to make them fit my need.
+### As you can probably tell this is very similar to Project Error's version thats because I used some of their Utils and Visibility Provider but changed them to make them fit my need.
 Credit to them.
