@@ -1,3 +1,5 @@
+import { browserMode } from '@store/stores'
+
 /**
 * @param eventName - The endpoint eventname to target
 * @param data - Data you wish to send in the NUI Callback
@@ -7,8 +9,12 @@
 
 export async function SendNUI<T = any>(
   eventName: string,
-  data: unknown = {}
+  data: unknown = {},
+  debugReturn?: T
 ): Promise<T> {
+  if (browserMode && debugReturn) {
+    return Promise.resolve(debugReturn as T)
+  }
   const options = {
     method: "post",
     headers: {
