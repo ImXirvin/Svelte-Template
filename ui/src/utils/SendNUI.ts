@@ -1,4 +1,4 @@
-import { browserMode } from '@store/stores'
+import { browserMode, resName } from '@store/stores'
 
 /**
 * @param eventName - The endpoint eventname to target
@@ -7,12 +7,22 @@ import { browserMode } from '@store/stores'
 * @return returnData - A promise for the data sent back by the NuiCallbacks CB argument
 */
 
+let isBrowserMode = false;
+browserMode.subscribe((value) => {
+  isBrowserMode = value;
+});
+
+let debugResName = "";
+resName.subscribe((value) => {
+  debugResName = value;
+});
+
 export async function SendNUI<T = any>(
   eventName: string,
   data: unknown = {},
   debugReturn?: T
 ): Promise<T> {
-  if (browserMode && debugReturn) {
+  if (isBrowserMode == true && debugReturn) {
     return Promise.resolve(debugReturn as T)
   }
   const options = {
@@ -25,9 +35,10 @@ export async function SendNUI<T = any>(
 
   const resourceName = (window as any).GetParentResourceName
     ? (window as any).GetParentResourceName()
-    : "nui-frame-app";
+    : debugResName;
 
-  const resp = await fetch(`https://${resourceName}/${eventName}`, options);
+    if (isBrowserMode) return debugReturn || {} as T;
 
-  return await resp.json();
+    const resp: Response = await fetch(`https://${resourceName}/${eventName}`, options);
+    return await resp.json()
 }

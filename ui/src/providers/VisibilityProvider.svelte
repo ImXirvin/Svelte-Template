@@ -6,30 +6,28 @@
   import BackdropFix from './BackdropFix.svelte';
 
 
-  let isVisible: boolean;
+let isVisible: boolean;
 
-  visibility.subscribe((visible) => {
-    isVisible = visible;
-  });
+visibility.subscribe((visible: boolean) => {
+  isVisible = visible;
+});
 
-  ReceiveNUI<boolean>('setVisible', (visible) => {
-    visibility.set(visible);
-  });
+ReceiveNUI<boolean>('setVisible', (visible: boolean) => {
+  visibility.set(visible);
+});
 
+onMount(() => {
+  const keyHandler = (e: KeyboardEvent) => {
+    if (isVisible && ['Escape'].includes(e.code)) {
+      SendNUI('hideUI');
+      visibility.set(false);
+    }
+  };
 
-  onMount(() => {
-    const keyHandler = (e: KeyboardEvent) => {
-      if (isVisible && ['Escape'].includes(e.code)) {
-        SendNUI('hideUI');
-        visibility.set(false);
-      }
-    };
+  window.addEventListener('keydown', keyHandler);
 
-    window.addEventListener('keydown', keyHandler);
-  
-
-    return () => window.removeEventListener('keydown', keyHandler);
-  });
+  return () => window.removeEventListener('keydown', keyHandler);
+});
 </script>
 
 {#if isVisible}

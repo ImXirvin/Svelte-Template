@@ -9,6 +9,9 @@ Pretty cool.
 - SendNUI also has a third parameter for debugReturn for browser development where you can use .then() on.
 - Has a visibility Provider which can be toggled with "setVisible" and the data being a boolean.
 
+## WHAT MAKES THIS THE BEST
+- YOU CAN RUN LOCAL HOST IN GAME AND THE CLICKS AND ANY SENDNUI WILL TRIGGER CALLBACKS IN SCRIPTS
+
 `npm install`
 
 `npm run dev`

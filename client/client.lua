@@ -1,15 +1,15 @@
+local function toggleUI(bool)
+	SetNuiFocus(bool, bool)
+	SendNUIMessage({
+		action = "setVisible",
+		data = bool
+	})
+end
 
+RegisterCommand("UI", function()
+	toggleUI(true)
+end, false)
 
--- SendNUIMessage({
---     action = "setVisible",
---     data = true
--- })
-
--- RegisterNUICallback("hideUI", function()
---     SetNuiFocus(false, false)
---     SendNUIMessage({
---         action = "setVisible",
---         data = false
---     })
---     ui = false
--- end)
+RegisterNUICallback("hideUI", function()
+    toggleUI(false)
+end)
