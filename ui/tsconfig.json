@@ -12,7 +12,7 @@
       "@providers/*": ["src/providers/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["src/utils/*"],
-      "@types/*": ["src/types/*"],
+      "@customTypes/*": ["src/customTypes/*"],
     },
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
