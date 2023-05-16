@@ -7,5 +7,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: {
+    '@tailwindcss/jit': {},
+    'autoprefixer': {},
+  },
 }
