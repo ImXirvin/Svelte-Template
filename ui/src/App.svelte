@@ -21,4 +21,5 @@
 <AlwaysListener />
 {#if $BROWSER_MODE}
 	<DebugBrowser />
+
 {/if}
