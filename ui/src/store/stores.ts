@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
 
-export const visibility = writable<boolean>(false);
-export const browserMode = writable<boolean>(false);
-export const resName = writable<string>("");
+export const VISIBILITY = writable<boolean>(false);
+export const BROWSER_MODE = writable<boolean>(false);
+export const RESOURCE_NAME = writable<string>("");

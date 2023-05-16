@@ -1,10 +1,10 @@
 <script lang="ts">
 	import VisibilityProvider from '@providers/VisibilityProvider.svelte'
-	import { browserMode, resName } from '@store/stores'
+	import { BROWSER_MODE, RESOURCE_NAME } from '@store/stores'
 	import DebugBrowser from '@providers/DebugBrowser.svelte'
 	import AlwaysListener from '@providers/AlwaysListener.svelte'
 
-	$resName = 'Svelte-Template' // Change this to your resource name (case sensitive)
+	$RESOURCE_NAME = 'Svelte-Template' // Change this to your resource name (case sensitive)
 </script>
 
 <VisibilityProvider>
@@ -19,6 +19,6 @@
 
 
 <AlwaysListener />
-{#if $browserMode}
+{#if $BROWSER_MODE}
 	<DebugBrowser />
 {/if}

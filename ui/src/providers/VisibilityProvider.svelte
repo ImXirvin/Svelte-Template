@@ -2,25 +2,29 @@
   import { ReceiveNUI } from '../utils/ReceiveNUI';
   import { SendNUI } from '../utils/SendNUI';
   import { onMount } from 'svelte';
-  import { visibility } from '../store/stores';
+  import { BROWSER_MODE, VISIBILITY } from '../store/stores';
   import BackdropFix from './BackdropFix.svelte';
 
 
 let isVisible: boolean;
 
-visibility.subscribe((visible: boolean) => {
+VISIBILITY.subscribe((visible: boolean) => {
   isVisible = visible;
 });
 
 ReceiveNUI<boolean>('setVisible', (visible: boolean) => {
-  visibility.set(visible);
+  VISIBILITY.set(visible);
 });
 
 onMount(() => {
   const keyHandler = (e: KeyboardEvent) => {
     if (isVisible && ['Escape'].includes(e.code)) {
       SendNUI('hideUI');
-      visibility.set(false);
+      VISIBILITY.set(false);
+    }
+    if (!isVisible && ['Escape'].includes(e.code) && $BROWSER_MODE === true) {
+      SendNUI('setVisible', true);
+      VISIBILITY.set(true);
     }
   };
 

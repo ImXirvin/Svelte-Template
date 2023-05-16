@@ -1,12 +1,12 @@
-import { browserMode, resName } from '@store/stores'
+import { BROWSER_MODE, RESOURCE_NAME } from '@store/stores'
 
 let isBrowserMode: boolean = false;
-browserMode.subscribe((value: boolean) => {
+BROWSER_MODE.subscribe((value: boolean) => {
   isBrowserMode = value;
 });
 
 let debugResName: string = "";
-resName.subscribe((value: string) => {
+RESOURCE_NAME.subscribe((value: string) => {
   debugResName = value;
 });
 
