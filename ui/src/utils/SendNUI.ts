@@ -22,7 +22,7 @@ export async function SendNUI<T = any>(
   data: unknown = {},
   debugReturn?: T
 ): Promise<T> {
-  if (isBrowserMode == true && debugReturn) {
+  if ((isBrowserMode == true && debugReturn) || (isBrowserMode == true)) {
     return Promise.resolve(debugReturn || {} as T)
   }
   const options = {
