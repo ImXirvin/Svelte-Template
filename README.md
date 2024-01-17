@@ -1,3 +1,6 @@
+# USE NEW VERSION FOUND [HERE](https://github.com/Byte-Labs-Project/bl_svelte_template)
+
+
 # Svelte-Template
 Template for Svelte, TS, Taiwind and FiveM
 
